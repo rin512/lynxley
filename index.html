@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lynxley AI</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #080d18;
+  color: #eef4ff;
+  font-family: -apple-system, sans-serif;
+}
+header {
+  padding: 22px;
+  border-bottom: 1px solid #26334a;
+  font-size: 24px;
+  font-weight: bold;
+  color: #64c8ff;
+}
+main {
+  max-width: 700px;
+  margin: auto;
+  padding: 24px 18px;
+}
+.welcome {
+  margin-top: 65px;
+  text-align: center;
+}
+.welcome h1 {
+  font-size: 36px;
+  color: #64c8ff;
+}
+.welcome p { color: #94a7c2; }
+.chat {
+  margin-top: 45px;
+  display: flex;
+  gap: 10px;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #30415d;
+  background: #121d30;
+  color: white;
+}
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 0 20px;
+  background: #168bd0;
+  color: white;
+  font-weight: bold;
+}
+#messages { margin-top: 25px; }
+.message {
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 14px;
+  background: #142238;
+  overflow-wrap: anywhere;
+}
+</style>
+</head>
+<body>
+<header>✦ Lynxley</header>
+<main>
+  <section class="welcome">
+    <h1>Lynxley AI</h1>
+    <p>Your Personal AI Assistant.</p>
+    <p>何でも気軽に話しかけてください。</p>
+  </section>
+  <div id="messages"></div>
+  <form class="chat" id="chat">
+    <input id="prompt" placeholder="Lynxleyに質問する..." autocomplete="off">
+    <button type="submit">送信</button>
+  </form>
+</main>
+<script>
+document.getElementById("chat").addEventListener("submit", e => {
+  e.preventDefault();
+  const input = document.getElementById("prompt");
+  const value = input.value.trim();
+  if (!value) return;
+  const box = document.getElementById("messages");
+  const message = document.createElement("div");
+  message.className = "message";
+  message.textContent = "あなた：" + value;
+  box.appendChild(message);
+  const reply = document.createElement("div");
+  reply.className = "message";
+  reply.textContent = "Lynxley：こんにちは！現在、AIの頭脳を準備中です。";
+  box.appendChild(reply);
+  input.value = "";
+});
+</script>
+</body>
+</html>
